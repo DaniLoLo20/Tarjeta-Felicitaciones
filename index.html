@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tarjeta Dinamica</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Righteous&family=Rock+Salt&display=swap" rel="stylesheet">
+
+	<script >
+		function cambiarTamanoEjemplo(){
+			var tam= document.getElementById("tamanoTxt").value;
+			document.getElementById("ejemploTexto").style.fontSize=tam+"em";
+			//alert(tam);
+				
+			}
+			function generarTarjeta(){
+				document.getElementById("tarjeta").style.display='block';
+				//revisamos caun radio es el de la imagen
+				var fondo;
+				if (document.getElementById("tipoImg1").checked)
+					fondo=document.getElementById("tipoImg1").value;
+				else if (document.getElementById("tipoImg2").checked)
+					fondo=document.getElementById("tipoImg2").value;
+				else 
+					fondo=document.getElementById("tipoImg3").value;
+
+				//Agregar el  fondo a nuestra tarjeta 
+
+				document.getElementById("tarjeta").style.backgroundImage="url('"+fondo+"')";
+				document.getElementById("tarjeta").style.backgroundRepeat="no-repeat";
+
+
+				//Insertar textos
+				var titu = document.getElementById("tituloTxt").value;
+				document.getElementById("titulo").innerHTML=titu;
+				//mis comentarios
+				var nom = document.getElementById("perTxt").value;
+				document.getElementById("Personas").innerHTML=nom;
+				//subtitulos
+				var sub = document.getElementById("subTxt").value;
+				document.getElementById("subtitulo").innerHTML=sub;
+				//Nombre
+				
+				var comen = document.getElementById("descripcon").value;
+				document.getElementById("descripcion").innerHTML=comen;
+				//color de texto
+				var c = document.getElementById("colorTxt").value;
+				document.getElementById("titulo").style.color=c;
+				//tamaño de texto
+				var tam = document.getElementById("tamanoTxt").value;
+				document.getElementById("titulo").style.fontSize=tam+"em";
+				document.getElementById("subtitulo").style.fontSize=tam+"em";
+				document.getElementById("Personas").style.fontSize=tam+"em";
+				document.getElementById("descripcion").style.fontSize=tam+"em";
+				//validar el tipo de fitografia
+				
+				var tipo;
+				if (document.getElementById("tipoTxt1").checked)
+					tipo=document.getElementById("tipoTxt1").value;
+				else if (document.getElementById("tipoTxt2").checked)
+					tipo=document.getElementById("tipoTxt2").value;
+				else 
+					tipo=document.getElementById("tipoTxt3").value;
+				//asignar tipografia
+				document.getElementById("titulo").style.fontFamily=tipo;
+				document.getElementById("subtitulo").style.fontFamily=tipo;
+				document.getElementById("Personas").style.fontFamily=tipo;
+				
+				
+				//ocultar xona de config
+				document.getElementById("contenido").style.display='none';
+			}
+	</script>
+
+</head>
+<body>
+	<article id="contenido">
+		<h1>Crea tu tarjeta de felicitacion</h1>
+		<h2>Elige un tema</h2>
+		<input type="radio" name="tipoGnre" id="" checked value="">
+		<label >San valentin</label>
+		<input type="radio" name="tipoGnre" id="" checked value="">
+		<label >Feliz Cumpleaños</label>
+		<input type="radio" name="tipoGnre" id="" checked value="">
+		<label >Motivacion</label>
+		<label >
+			<h2>Elige una cancion</h2>
+        <nav>
+        <audio src="audio/las mañanitas.mp3" preload="none" controls></audio> <audio src="audio.ogg" autoplay loop></audio>
+         <input type="radio" name="b" value="a">Cumpleaños
+        </nav>
+      <nav>
+       <audio src="audio/lo que siento.mp3" preload="none" controls></audio> <audio src="audio.ogg" autoplay loop></audio>
+        <input type="radio" name="b" value="b">San Valentin
+      </nav>
+      <nav>
+        <audio src="audio/pulso y sudor.mp3" preload="none" controls></audio> <audio src="audio.ogg" autoplay loop></audio>
+        <input type="radio" name="b" value="c">Motivación
+      </nav>
+      
+    </label>
+		<h2>Elige una imagen</h2>
+			<input type="radio" name="tipoImg" id="tipoImg1" checked value="img/felizdia.jpg">
+			<img src="img/felizdia.jpg" height="150" width="150" alt="" id="todaswapss">
+			<input type="radio" name="tipoImg" id="tipoImg2" checked value="img/SanVlentin.png">
+			<img src="img/SanVlentin.png" height="150" width="150" alt="" id="todaswapss">
+			<input type="radio" name="tipoImg" id="tipoImg3" checked value="img/motivacion.jpg">
+			<img src="img/motivacion.jpg" height="150" width="150" alt="" id="todaswapss">
+		<h2>Agregar un titulo</h2>
+		<input type="text" id="tituloTxt">
+		<h2>Agregar un subtitulo</h2>
+		<input type="text" id="subTxt">
+		<h2>Agregar nombre de la persona</h2>
+		<input type="text" id="perTxt">
+		<h2>Agregar una descripcion</h2>
+		<textarea id="descripcon" cols="30" rows="5"></textarea>
+		<h2>Formato de texto</h2>
+		<label for="colorTxt">Color: </label>
+		<input type="color" id="colorTxt">
+		<label for="colorTxt">Tamaño de letra:</label>
+		<input type="range" id="tamanoTxt" min="1" max="5" onchange="cambiarTamanoEjemplo()">
+		<label id="ejemploTexto">Ejemplo</label> <br>
+		<label >Tipografia: </label>
+		<input type="radio" name="tipoTxt" id="tipoTxt1" checked value="Lobster">
+		<label id="tipo1">lobster</label>
+		<input type="radio" name="tipoTxt" id="tipoTxt2" checked value="Righteous">
+		<label id="tipo2">Righteous</label>
+		<input type="radio" name="tipoTxt" id="tipoTxt3" checked value="Rock Salt">
+		<label id="tipo3">Rock Salt</label>
+		<br>
+		<img src="img/Enviar.png" width="40" onclick="generarTarjeta()" id="mausing">
+		<br><br>
+	</article>
+	<article id="tarjeta">
+		<h1 id="titulo"></h1>
+		<h2 id="descripcion"></h2>
+		<h2 id="subtitulo"></h2>
+		<h2 id="Personas"></h2>
+		
+	</article>
+	
+</body>
+</html>
+
+
+
+
